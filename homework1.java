@@ -1,87 +1,93 @@
-// 1) Вычислить n-ое треугольного число (сумма чисел от 1 до n), n! (произведение чисел от 1 до n)
-// 2) Вывести все простые числа от 1 до 1000
 
-// доделать до нужных чисел 
+// Вычислить n-ое треугольного число (сумма чисел от 1 до n), n! (произведение
+// чисел от 1 до n)
+import java.util.Scanner;
 
-public class homework1 {
+public class Task1 {
 
-    for (int i = 2; i <= 100; i++) {
+    public static void main(String[] args) {
+         Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        System.out.println(factor(n));
+    }
 
-                for (int j = 2; j <= i; j++) {
-
-                    if (j < i  & i % j == 0) {
-                        break;
-                    }
-                    if (i % j == 0) {
-                        System.out.println(i);
-                    }
-                }
-            }
+    static int factor(int n) {
+        if (n == 1)
+            return 1;
+        return n * factor(n - 1);
+    }
 }
 
 
+// Реализовать простой калькулятор
+import java.util.Scanner;
 
-// 3) Реализовать простой калькулятор
-// 4) (дополнительное задание) Задано уравнение вида q + w = e, q, w, e >= 0. 
-// Некоторые цифры могут быть заменены знаком вопроса, например, 2? + ?5 = 69. 
-// Требуется восстановить выражение до верного равенства. 
-// Предложить хотя бы одно решение или сообщить, что его нет.
+public class task3 {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.printf("Введите операцию - + / * ");
+        String k = in.nextLine();
+        calc(k);
+    }
+
+    static void calc(String k) {
+        Scanner in = new Scanner(System.in);
+        System.out.printf("Введите первое число: ");
+        int n = in.nextInt();
+        System.out.printf("Введите второе число: ");
+        int m = in.nextInt();
+        switch (k) {
+            case "+":
+                sum(n, m);
+                break;
+            case "-":
+                dif(n, m);
+                break;
+            case "/":
+                System.out.println(div(n, m));
+                break;
+            case "*":
+                comp(n, m);
+                break;
+        }
+    }
+
+    static void sum(int n, int m) {
+        System.out.println(n + m);
+    }
+
+    static void dif(int n, int m) {
+        System.out.println(n - m);
+    }
+
+    static void comp(int n, int m) {
+        System.out.println(n * m);
+    }
+
+    static double div(int n, int m) {
+        return n / m;
+    }
+
+}
 
 
+// Вывести все простые числа от 1 до 1000
 
+public class task2 {
+    public static void main(String[] args) {
 
-// public class homework1 {
-    
-//     public static void name(String[] args) {
-//         System.out.println();
-//     }
-// }
-
-
-// // Scanner in = new Scanner(System.in); должно быть внутри main
-// // import java.util.Scanner;
-
-
-// import java.util.Scanner; // для ввода данных вроде бы
-
-// public class Main
-// {
-// 	public static void main(String[] args) {
-// 	    int n = 5;
-// 	    String a = "Hello";
-// 	    var x = 'f';
-// 	    boolean flag = true;
-// 	    System.out.println(a + " World");
-// 		for (int i = 0;i <= 10 ;i++ ){
-// 		    System.out.println(i);
-// 		} 
-// 		while(n < 20){
-// 		    System.out.println(n);
-// 		    n+=5;
-// 		}
-		
-// 		int j = 7;
-//         do{
-//             System.out.println(j);
-//             j--;
-//         }
-//         while (j > 0);
-        
-//         int[] nums = new int[5];
-//         int[] x1 = {1,215,627,35684,3221,7658,96473};
-        
-//         for (int i = 0;i < x1.length;i++ ){
-//             if(x1[i] % 2 == 0)
-//                 System.out.println(x1[i]); 
-//         } 
-//         Scanner in = new Scanner(System.in);
-//         String name = in.nextLine();
-//         System.out.println(name);
-        
-        
-        
-        
-        
-        
-// 	}
-// }
+        for (int i = 2; i <= 1000; i++) {
+            boolean flag = true;
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                System.out.println(i);
+            }
+        }
+    }
+}
